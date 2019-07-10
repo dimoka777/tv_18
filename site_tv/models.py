@@ -18,14 +18,14 @@ class Post(models.Model):
     text = models.TextField()
     order_date = models.DateTimeField(default=datetime.now)
     post_dates = models.IntegerField()
-    price = models.PositiveIntegerField(null=True, blank=True)
+    quantity_symbols = models.PositiveIntegerField(null=True, blank=True)
     reception = models.BooleanField(default=False)
-    
+
     def __str__(self):
-        return '{}{}{}'.format(self.text, self.order_date, self.price, )
+        return '{}{}{}'.format(self.text, self.order_date, self.quantity_symbols, )
 
 
 @receiver(pre_save, sender=Post)
 def total_price(sender, instance, **kwargs):
-    instance.price = len(instance.text)
+    instance.quantity_symbols = len(instance.text)
 
