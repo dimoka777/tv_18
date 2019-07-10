@@ -10,17 +10,19 @@
         <th>Order Date</th>
         <th>Text</th>
         <th>Qu. symbols</th>
-        <th>Post date</th>
         <th>price</th>
+        <th>Post date</th>
+
     </tr>
     </thead>
     <tbody>
     {% for text in object_list %}
     <tr>
-        <th style="padding: 10px;">{{ text.tv_choice }}</th>
+        <th style="padding: 10px;">{{ text.choice }}</th>
         <th style="padding: 10px;">{{ text.order_date }}</th>
         <th style="padding: 10px;">{{ text.text }}</th>
         <th style="padding: 10px;">{{ text.quantity_symbols }}</th>
+        <th style="padding: 10px;">{{ text.total_price }} сом</th>
         <th style="padding: 10px;">{{ text.post_dates }}</th>
     </tr>
     {% endfor %}

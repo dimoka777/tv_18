@@ -19,6 +19,7 @@ class Post(models.Model):
     order_date = models.DateTimeField(default=datetime.now)
     post_dates = models.IntegerField()
     quantity_symbols = models.PositiveIntegerField(null=True, blank=True)
+    total_price = models.FloatField(null=True, blank=True)
     reception = models.BooleanField(default=False)
     choice = models.ForeignKey(Choice, related_name='posts', on_delete=models.SET_NULL, null=True)
 
@@ -29,7 +30,9 @@ class Post(models.Model):
 @receiver(pre_save, sender=Post)
 def total_price(sender, instance, **kwargs):
     try:
-        instance.quantity_symbols = len(instance.text) * instance.choice.tv_price
+        str_text = instance.text.replace(" ", "")
+        instance.total_price = len(str_text) * instance.choice.tv_price
+        instance.quantity_symbols = len(str_text)
     except:
         raise ValidationError('Choise is null')
 

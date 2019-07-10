@@ -9,26 +9,33 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link href="{% static 'css/github-gist.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/datepicker.min.css' %}" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="{% static 'js/datepicker.js' %}"></script>
+    <script src="{% static 'js/i18n/datepicker.en.js' %}"></script>
+    <script src="{% static 'js/logger.js' %}"></script>
     <title>Реклама</title>
 </head>
 <body>
 <header>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Logo</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarText">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="{% url 'post_list' %}">Post list</a>
-      </li>
-      <li class="nav-item">
-       <a class="nav-link active" href="{% url 'main' %}">Create</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Logo</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'post_list' %}">Post list</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'main' %}">Create</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 </header>
 <div class="container">
     <div class="row">
@@ -36,5 +43,6 @@
         {% endblock %}
     </div>
 </div>
+<script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
 </body>
 </html>
