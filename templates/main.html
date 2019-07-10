@@ -3,10 +3,11 @@
     <h1>Main</h1>
 {% endblock %}
 {% block content %}
+<div style="margin-top:60px;">
     <form method="post" action="">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">save</button>
-    </form>
+        <button type="submit" class="btn btn-danger">save</button>
+    </form></div>
 {% endblock %}
 

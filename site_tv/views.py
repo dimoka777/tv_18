@@ -3,7 +3,7 @@ from .models import Post
 
 
 class SubPostListView(ListView):
-    model = Post
+    queryset = Post.objects.all()[::-1]
     template_name = 'post_list.html'
 
 
