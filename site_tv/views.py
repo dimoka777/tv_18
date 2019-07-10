@@ -10,7 +10,7 @@ class SubPostListView(ListView):
 class SubAgent(CreateView):
     model = Post
     template_name = 'main.html'
-    fields = ['tv_choice', 'text', 'post_dates']
+    fields = ['choice', 'text', 'post_dates']
     success_url = '/'
 
 

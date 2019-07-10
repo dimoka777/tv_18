@@ -4,7 +4,7 @@
 <!--    <div class="text-len">{{ object_list }}</div>-->
 <!--</div>-->
 <table class="table table-hover mt-5">
-<thead>
+    <thead>
     <tr>
         <th>TV Channel:</th>
         <th>Order Date</th>
@@ -13,17 +13,18 @@
         <th>Post date</th>
         <th>price</th>
     </tr>
-</thead>
-<tbody>
+    </thead>
+    <tbody>
     {% for text in object_list %}
-    <th style="padding: 10px;">{{ text.tv_choice }}</th>
-    <th style="padding: 10px;">{{ text.order_date }}</th>
-    <th style="padding: 10px;">{{ text.text }}</th>
-    <th style="padding: 10px;">{{ text.quantity_symbols }}</th>
-    <th style="padding: 10px;">{{ text.post_dates }}</th>
-        </tr>
+    <tr>
+        <th style="padding: 10px;">{{ text.tv_choice }}</th>
+        <th style="padding: 10px;">{{ text.order_date }}</th>
+        <th style="padding: 10px;">{{ text.text }}</th>
+        <th style="padding: 10px;">{{ text.quantity_symbols }}</th>
+        <th style="padding: 10px;">{{ text.post_dates }}</th>
+    </tr>
     {% endfor %}
-</tbody>
+    </tbody>
 </table>
 
 {% endblock %}
