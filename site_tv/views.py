@@ -1,8 +1,8 @@
-from django.views.generic import CreateView, ListView, DeleteView
+from django.views.generic import CreateView, ListView
+from site_tv.forms import CreateField
 from .models import Post
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import redirect
-
+from django.shortcuts import redirect, render
 
 class SubPostListView(LoginRequiredMixin, ListView):
     queryset = Post.objects.all()
@@ -14,6 +14,13 @@ class SubAgent(LoginRequiredMixin, CreateView):
     template_name = 'main.html'
     fields = ['choice', 'text', 'post_dates']
     success_url = '/'
+
+
+def test(request):
+    test_create = Post.objects.order_by('id')
+    form = CreateField()
+    context = {'test_create': test_create, 'form': form}
+    return render(request, 'test.html', context)
 
 
 def completeTodo(request, todo_id):
