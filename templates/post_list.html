@@ -1,56 +1,104 @@
 {% extends 'base.html' %}
 {% block content %}
-<!--<div style="margin-top: 40px; background: #Eee;">-->
-<!--    <div class="text-len">{{ object_list }}</div>-->
-<!--</div>-->
-<script language="JavaScript">
-    function toggle(source) {
-        checkboxes = document.getElementsByName('foo');
-        for (var checkbox in checkboxes)
-            checkbox.checked = source.checked;
-    }
-</script>
-<table class="table table-hover mt-5">
-    <thead>
-    <tr>
-        <th><input type="checkbox" onClick="toggle(this)"/></th>
-        <th>№</th>
-        <th>Дата</th>
-        <th>Телеканал</th>
-        <th>Текст</th>
-        <th>Дата проката (отст)</th>
-        <th>Кол. день</th>
-        <th>Кол. симв</th>
-        <th>Сумма</th>
-        <th>Статус</th>
-
-
-    </tr>
-    </thead>
-    <tbody>
-    {% for text in object_list %}
-    <tr>
-        <th><input type="checkbox" id="scales" name="foo"></th>
-        <th>{{ text.id }}</th><!-- № текста-->
-        <th style="padding: 10px;">{{ text.order_date }}</th> <!--Дата создания-->
-        <th style="padding: 10px;">{{ text.choice }}</th> <!-- Телеканал -->
-        <th style="padding: 10px;">{{ text.text }}</th> <!-- Текст -->
-        <th style="padding: 10px;">{{ text.post_dates }}</th><!--Дата проката-->
-        <th style="padding: 10px;">{{ text.post_dates }}</th> <!--Количество дней-->
-        <th style="padding: 10px;">{{ text.quantity_symbols }}</th> <!--Количество символов-->
-        <th style="padding: 10px;">{{ text.total_price }} сом</th> <!--Сумма -->
-        <th>{{ text.reception }}</th>
-
-    </tr>
-    {% endfor %}
-    </tbody>
-</table>
-<script>
-    function toggle(source) {
-        checkboxes = document.getElementsByName('foo');
-        for (var i = 0, n = checkboxes.length; i < n; i++) {
-            checkboxes[i].checked = source.checked;
+    <script language="JavaScript">
+        function toggle(source) {
+            checkboxes = document.getElementsByName('foo');
+            for (var checkbox in checkboxes)
+                checkbox.checked = source.checked;
         }
-    }
-</script>
+    </script>
+
+
+    <table class="table table-hover mt-5">
+        <thead>
+        <tr>
+            <th><input type="checkbox" id="chkDelete" onClick="toggle(this)"/></th>
+            <th>№</th>
+            <th>Дата создания</th>
+            <th>Телеканал</th>
+            <th>Текст</th>
+            <th>Дата проката (отст)</th>
+            <th>Кол. день</th>
+            <th>Кол. симв</th>
+            <th>Сумма</th>
+            <th>Статус</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for text in object_list %}
+            {% if text.complete %}
+                <tr class="todo-completed">
+                    <th><input type="checkbox" name="foo" id=""
+                               onclick="location.href = '{% url 'uncomplete' text.id %}'" checked></th>
+                    <th>{{ text.id }}</th><!-- № текста-->
+                    <th style="padding: 10px;">{{ text.order_date }}</th> <!--Дата создания-->
+                    <th style="padding: 10px;">{{ text.choice }}</th> <!-- Телеканал -->
+                    <th style="padding: 10px;">{{ text.text }}</th> <!-- Текст -->
+                    <th style="padding: 10px;">{{ text.post_dates }}</th><!--Дата проката-->
+                    <th style="padding: 10px;">{{ text.post_dates }}</th> <!--Количество дней-->
+                    <th style="padding: 10px;">{{ text.quantity_symbols }}</th> <!--Количество символов-->
+                    <th style="padding: 10px;">{{ text.total_price }} сом</th> <!--Сумма -->
+                    <th>{{ text.reception }}</th>
+                </tr>
+            {% else %}
+                <tr class="todo-completed">
+                    <th><input type="checkbox" name="foo" id=""
+                               onclick="location.href = '{% url 'complete' text.id %}'"></th>
+                    <th>{{ text.id }}</th><!-- № текста-->
+                    <th style="padding: 10px;">{{ text.order_date }}</th> <!--Дата создания-->
+                    <th style="padding: 10px;">{{ text.choice }}</th> <!-- Телеканал -->
+                    <th style="padding: 10px;">{{ text.text }}</th> <!-- Текст -->
+                    <th style="padding: 10px;">{{ text.post_dates }}</th><!--Дата проката-->
+                    <th style="padding: 10px;">{{ text.post_dates }}</th> <!--Количество дней-->
+                    <th style="padding: 10px;">{{ text.quantity_symbols }}</th> <!--Количество символов-->
+                    <th style="padding: 10px;">{{ text.total_price }} сом</th> <!--Сумма -->
+                    <th>{{ text.reception }}</th>
+                </tr>
+
+            {% endif %}
+
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="row t10">
+        <div class="col-lg-12">
+            <div class="btn-toolbar">
+                <div class="btn-group">
+                    <a href="{% url 'deletecomplete' %}">
+                        <button type="button" class="btn btn-dark">
+                            Удалить выделенные
+                        </button>
+                    </a>
+                </div>
+                <div id="pnlDeleteAll" class="btn-group dlt-btn">
+
+                    <a href="{% url 'deleteall' %}">
+                        <button type="button" class="btn btn-dark">
+                            Удалить все
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function toggle() {
+            var div = document.getElementById('pnlDeleteAll');
+            if (this.checked)
+                div.style.display = 'block';
+            else
+                div.style.display = 'none'
+        }
+
+        document.getElementById('chkDelete').onchange = toggle;
+    </script>
+
+    <script>
+        function toggle(source) {
+            checkboxes = document.getElementsByName('foo');
+            for (var i = 0, n = checkboxes.length; i < n; i++) {
+                checkboxes[i].checked = source.checked;
+            }
+        }
+    </script>
 {% endblock %}

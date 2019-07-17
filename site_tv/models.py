@@ -16,6 +16,7 @@ class Choice(models.Model):
 
 class Post(models.Model):
     text = models.TextField()
+    complete = models.BooleanField(default=False)
     order_date = models.DateTimeField(default=datetime.now)
     post_dates = models.IntegerField()
     quantity_symbols = models.PositiveIntegerField(null=True, blank=True)
@@ -35,4 +36,5 @@ def total_price(sender, instance, **kwargs):
         instance.quantity_symbols = len(str_text)
     except:
         raise ValidationError('Choise is null')
+
 

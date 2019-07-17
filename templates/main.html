@@ -3,16 +3,21 @@
     <h1>Main</h1>
 {% endblock %}
 {% block content %}
-<div style="margin-top:60px;">
-    <form method="post" action="">
-        {% csrf_token %}
-        <p>Choice: </p>{{ form.choice }}
-        <p>text: </p>{{ form.text }}
-<!--        <p>Post dates: </p>{{ form.post_dates }}-->
-        {{ form.post_dates }}
-        <input type="text" data-multiple-dates="100" data-multiple-dates-separator=", " data-position="top left" class="datepicker-here">
-        <button type="submit" class="btn btn-danger">save</button>
-    </form>
-</div>
+    <div class="container">
+        <div class="row">
+            <div style="margin-top:60px;">
+                <form method="post" action="">
+                    {% csrf_token %}
+                    <h5>Канал: </h5>{{ form.choice }}
+                    <h5>Текст сообщения: </h5>{{ form.text }}
+                    <!--        <p>Post dates: </p>{{ form.post_dates }}-->
+                    {{ form.post_dates }}
+                    <input type="text" data-multiple-dates="100" data-multiple-dates-separator=", "
+                           data-position="top left" class="datepicker-here">
+                    <button type="submit" class="btn btn-danger">Сохранить</button>
+                </form>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 

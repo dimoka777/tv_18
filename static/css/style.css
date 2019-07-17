@@ -1,11 +1,9 @@
 body {
-    /*background: #9053c7;*/
-    /*    background: -webkit-linear-gradient(-135deg,#c850c0,#4158d0);*/
-    /*    background: -o-linear-gradient(-135deg,#c850c0,#4158d0);*/
-    /*    background: -moz-linear-gradient(-135deg,#c850c0,#4158d0);*/
-    /*    background: linear-gradient(-135deg,#c850c0,#4158d0);*/
-    /*}*/
+    background-image: url(../images/img2.jpg);
+    background-size: cover;
+    background-position: 50% 50%;
 }
+
 label {
     font-size: 32px;
     text-align: center;
@@ -14,13 +12,11 @@ label {
 }
 
 textarea {
-	outline: none;
-	-moz-appearance: none;
-	border: 1px solid #999; /* указание этого свойства также удалит обводку в FireFox */
+    outline: none;
+    -moz-appearance: none;
+    background: transparent !important;
     width: 1000px;
-    background: #9053c7;
-    background: #eee;
-    border: 2px solid #eee;
+    border: 2px solid #23394a;
 }
 
 select {
@@ -32,4 +28,17 @@ select {
 
 header {
     background-color: #23394A;
+}
+
+
+.dlt-btn {
+    display: none
+}
+
+select#id_choice {
+    background-color: #23394a;
+    width: 200px;
+    height: 35px;
+    padding: 5px;
+    color: #Fff;
 }
