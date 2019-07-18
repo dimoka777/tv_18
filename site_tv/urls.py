@@ -8,5 +8,6 @@ urlpatterns = [
     path('uncomplete/<todo_id>', uncompleteTodo, name='uncomplete'),
     path('deletecomplete', deleteCompleted, name='deletecomplete'),
     path('deleteall', deleteAll, name='deleteall'),
-    path('creates/', test, name='main'),
+    path('creates/', test, name='creates'),
+    path('creates/save/', addTodo, name='save')
 ]

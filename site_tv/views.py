@@ -1,3 +1,4 @@
+from django.views.decorators.http import require_POST
 from django.views.generic import CreateView, ListView
 from site_tv.forms import CreateField
 from .models import Post
@@ -22,6 +23,18 @@ def test(request):
     context = {'test_create': test_create, 'form': form}
     return render(request, 'test.html', context)
 
+
+def addTodo(request):
+    form = CreateField()
+    if request.method == 'POST':
+        form = CreateField(request.POST)
+        if form.is_valid():
+            saved_instance = form.save(commit=True)
+            return render(request, 'test.html', {'form':CreateField(instance=saved_instance)})
+        else:
+            print('ERROR')
+    return render(request, 'test.html', {'form':form})
+ 
 
 def completeTodo(request, todo_id):
     todo = Post.objects.get(pk=todo_id)

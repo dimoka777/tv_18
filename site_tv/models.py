@@ -18,7 +18,7 @@ class Post(models.Model):
     text = models.TextField()
     complete = models.BooleanField(default=False)
     order_date = models.DateTimeField(default=datetime.now)
-    post_dates = models.IntegerField()
+    post_dates = models.TextField()
     quantity_symbols = models.PositiveIntegerField(null=True, blank=True)
     total_price = models.FloatField(null=True, blank=True)
     reception = models.BooleanField(default=False)
