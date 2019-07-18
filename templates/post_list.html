@@ -9,50 +9,50 @@
     </script>
 
 
-    <table class="table table-hover mt-5">
+    <table class="table table-hover ">
         <thead>
         <tr>
-            <th><input type="checkbox" id="chkDelete" onClick="toggle(this)"/></th>
-            <th>№</th>
-            <th>Дата создания</th>
-            <th>Телеканал</th>
-            <th>Текст</th>
-            <th>Дата проката (отст)</th>
-            <th>Кол. день</th>
-            <th>Кол. симв</th>
-            <th>Сумма</th>
-            <th>Статус</th>
+            <th width="10px"><input type="checkbox" id="chkDelete" onClick="toggle(this)"/></th>
+            <th width="50px">№</th>
+            <th width="190px">Дата создания</th>
+            <th width="120px">Телеканал</th>
+            <th width="400px">Текст</th>
+            <th width="200px">Дата проката</th>
+            <th width="50px" style="font-size: 13px;">Кол. дней</th>
+            <th width="50px" style="font-size: 13px;">Кол. симв</th>
+            <th width="100px">Сумма</th>
+            <th width="100px">Статус</th>
         </tr>
         </thead>
         <tbody>
         {% for text in object_list %}
             {% if text.complete %}
                 <tr class="todo-completed">
-                    <th><input type="checkbox" name="foo" id=""
-                               onclick="location.href = '{% url 'uncomplete' text.id %}'" checked></th>
-                    <th>{{ text.id }}</th><!-- № текста-->
-                    <th style="padding: 10px;">{{ text.order_date }}</th> <!--Дата создания-->
-                    <th style="padding: 10px;">{{ text.choice }}</th> <!-- Телеканал -->
-                    <th style="padding: 10px;">{{ text.text }}</th> <!-- Текст -->
-                    <th style="padding: 10px;">{{ text.post_dates }}</th><!--Дата проката-->
-                    <th style="padding: 10px;">{{ text.post_dates }}</th> <!--Количество дней-->
-                    <th style="padding: 10px;">{{ text.quantity_symbols }}</th> <!--Количество символов-->
-                    <th style="padding: 10px;">{{ text.total_price }} сом</th> <!--Сумма -->
-                    <th>{{ text.reception }}</th>
+                    <td><input type="checkbox" name="foo" id=""
+                               onclick="location.href = '{% url 'uncomplete' text.id %}'" checked></td>
+                    <td>{{ text.id }}</td><!-- № текста-->
+                    <td>{{ text.order_date }}</td> <!--Дата создания-->
+                    <td>{{ text.choice }}</td> <!-- Телеканал -->
+                    <td style="text-align:left;">{{ text.text }}</td> <!-- Текст -->
+                    <td>{{ text.post_dates }}</td><!--Дата проката-->
+                    <td>{{ text.quantity_days }}</td> <!--Количество дней-->
+                    <td>{{ text.quantity_symbols }}</td> <!--Количество символов-->
+                    <td>{{ text.total_price }} сом</td> <!--Сумма -->
+                    <td>{{ text.reception }}</td>
                 </tr>
             {% else %}
                 <tr class="todo-completed">
-                    <th><input type="checkbox" name="foo" id=""
-                               onclick="location.href = '{% url 'complete' text.id %}'"></th>
-                    <th>{{ text.id }}</th><!-- № текста-->
-                    <th style="padding: 10px;">{{ text.order_date }}</th> <!--Дата создания-->
-                    <th style="padding: 10px;">{{ text.choice }}</th> <!-- Телеканал -->
-                    <th style="padding: 10px;">{{ text.text }}</th> <!-- Текст -->
-                    <th style="padding: 10px;">{{ text.post_dates }}</th><!--Дата проката-->
-                    <th style="padding: 10px;">{{ text.post_dates }}</th> <!--Количество дней-->
-                    <th style="padding: 10px;">{{ text.quantity_symbols }}</th> <!--Количество символов-->
-                    <th style="padding: 10px;">{{ text.total_price }} сом</th> <!--Сумма -->
-                    <th>{{ text.reception }}</th>
+                    <td><input type="checkbox" name="foo" id=""
+                               onclick="location.href = '{% url 'complete' text.id %}'"></td>
+                    <td>{{ text.id }}</td><!-- № текста-->
+                    <td>{{ text.order_date }}</td> <!--Дата создания-->
+                    <td>{{ text.choice }}</td> <!-- Телеканал -->
+                    <td style="text-align:left;">{{ text.text }}</td> <!-- Текст -->
+                    <td>{{ text.post_dates }}</td><!--Дата проката-->
+                    <td>{{ text.quantity_days }}</td> <!--Количество дней-->
+                    <td>{{ text.quantity_symbols }}</td> <!--Количество символов-->
+                    <td>{{ text.total_price }} сом</td> <!--Сумма -->
+                    <td>{{ text.reception }}</td>
                 </tr>
 
             {% endif %}

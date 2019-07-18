@@ -5,16 +5,16 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <div style="margin-top:60px;">
+            <div style="margin-top:30px;">
                 <form method="post" action="">
                     {% csrf_token %}
                     <h5>Канал: </h5>{{ form.choice }}
+                    <hr>
                     <h5>Текст сообщения: </h5>{{ form.text }}
-                    <!--        <p>Post dates: </p>{{ form.post_dates }}-->
-                    {{ form.post_dates }}
-                    <input type="text" data-multiple-dates="100" data-multiple-dates-separator=", "
-                           data-position="top left" class="datepicker-here">
-                    <button type="submit" class="btn btn-danger">Сохранить</button>
+                    <hr>
+                    {{ form.date}}
+                    <hr>
+                    <button type="submit" class="btn btn-primary">Сохранить</button>
                 </form>
             </div>
         </div>
